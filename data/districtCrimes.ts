@@ -1,0 +1,267 @@
+export const numberOfDistrictCrimes: Record<string, number> = {
+  // Banteay Meanchey (Total: 75)
+  "Mongkol Borei": 15,
+  "Phnum Srok": 12,
+  "Preah Netr Preah": 18,
+  "Ou Chrov": 20,
+  "Serei Saophoan": 25,
+  "Thma Puok": 10,
+  "Svay Chek": 14,
+  Malai: 9,
+  "Paoy Paet": 30,
+
+  // Battambang (Total: 60)
+  Banan: 22,
+  "Thma Koul": 17,
+  Battambang: 40,
+  Bavel: 13,
+  "Aek Phnum": 21,
+  "Moung Ruessei": 16,
+  "Rotonak Mondol": 11,
+  Sangkae: 19,
+  Samlout: 14,
+  "Sampov Lun": 8,
+  "Phnum Proek": 6,
+  Kamrieng: 12,
+  "Koas Krala": 10,
+  "Rukh Kiri": 7,
+
+  // Kampong Cham (Total: 45)
+  "Kampong Cham": 45,
+  Batheay: 14,
+  "Chamkar Leu": 9,
+  "Cheung Prey": 13,
+  "Kampong Siem": 22,
+  "Kang Meas": 8,
+  "Kaoh Soutin": 10,
+  "Prey Chhor": 18,
+  "Stueng Trang": 16,
+
+  // Kampong Chhnang (Total: 30)
+  "Kampong Chhnang": 30,
+  Baribour: 9,
+  "Chol Kiri": 10,
+  "Kampong Leaeng": 18,
+  "Kampong Tralach": 17,
+  "Rolea B'ier": 25,
+  "Sameakki Mean Chey": 12,
+  "Tuek Phos": 7,
+
+  // Kampong Speu (Total: 55)
+  "Kampong Speu": 55,
+  Basedth: 12,
+  "Chbar Mon": 14,
+  "Kong Pisei": 18,
+  Odongk: 20,
+  Aoral: 9,
+  "Phnum Sruoch": 11,
+  "Samraong Tong": 16,
+  Thpong: 10,
+
+  // Kampong Thom (Total: 70)
+  "Kampong Thom": 70,
+  Baray: 20,
+  "Kampong Svay": 9,
+  "Prasat Ballangk": 10,
+  "Prasat Sambour": 12,
+  Sandan: 7,
+  Santuk: 14,
+  Stoung: 11,
+  "Stueng Saen": 10,
+
+  // Kampot (Total: 50)
+  Kampot: 50,
+  "Angkor Chey": 12,
+  "Banteay Meas": 10,
+  Chhuk: 16,
+  "Chum Kiri": 8,
+  "Dang Tong": 11,
+  "Kampong Trach": 14,
+  "Tuek Chhou": 18,
+
+  // Kandal (Total: 40)
+  Kandal: 40,
+  "Khsach Kandal": 13,
+  "Kaoh Thum": 16,
+  "Kien Svay": 18,
+  "Leuk Daek": 8,
+  "Lvea Aem": 22,
+  "Mukh Kampul": 10,
+  "Angk Snuol": 12,
+  "Ponhea Lueu": 15,
+  "S'ang": 17,
+  "Kandal Stueng": 10,
+  "Ta Khmau": 12,
+  // Kep (Total: 5)
+  Kep: 5,
+
+  // Koh Kong (Total: 35)
+  "Botum Sakor": 6,
+  "Khemara Phoumin": 8,
+  "Kiri Sakor": 10,
+  "Mondol Seima": 5,
+  "Srae Ambel": 12,
+  "Thma Bang": 4,
+  "Kaoh Kong": 12,
+
+  // Mondul Kiri (Total: 25)
+  "Mondul Kiri": 25,
+  "Kaev Seima": 6,
+  "Kaoh Nheaek": 5,
+  "Ou Reang": 4,
+  "Pech Chreada": 3,
+  "Saen Monourom": 7,
+
+  // Oddar Meanchey (Total: 65)
+  "Oddar Meanchey": 65,
+  "Anlong Veaeng": 12,
+  "Banteay Ampil": 14,
+  "Chong Kal": 9,
+  Samraong: 18,
+  "Trapeang Prasat": 10,
+
+  // Pailin (Total: 15)
+  Pailin: 10,
+  "Sala Krau": 5,
+
+  // Preah Sihanouk (Total: 85)
+  "Preah Sihanouk": 85,
+  "Prey Nob": 7,
+  "Stueng Hav": 5,
+  "Kampong Seila": 9,
+  "Kaoh Rong": 6,
+
+  // Prey Veng (Total: 80)
+  "Prey Veng": 80,
+  "Ba Phnum": 9,
+  "Kamchay Mear": 10,
+  "Kampong Leav": 9,
+  Kanhchriech: 5,
+  Mesang: 6,
+  "Peam Chor": 11,
+  "Peam Ro": 8,
+  "Pea Reang": 12,
+  "Preah Sdach": 15,
+  "Prey Kabbas": 17,
+  "Sithor Kandal": 6,
+  "Svay Antor": 7,
+  "Pur Rieng": 4,
+  "Me Sang": 5,
+  "Kampong Trabaek": 5,
+
+  // Pursat (Total: 22)
+  Pursat: 22,
+  Bakan: 9,
+  Kandieng: 10,
+  Krakor: 12,
+  "Phnum Kravanh": 8,
+  "Sampov Meas": 11,
+  "Talou Sen Chey": 7,
+  "Veal Veaeng": 10,
+
+  // Ratanak Kiri (Total: 18)
+  "Ratanak Kiri": 18,
+  "Andoung Meas": 5,
+  "Ban Lung": 7,
+  "Bar Kaev": 6,
+  "Koun Mom": 5,
+  Lumphat: 4,
+  "Ou Chum": 3,
+  "Ou Ya Dav": 4,
+  "Ta Veaeng": 3,
+  "Veun Sai": 5,
+
+  // Svay Rieng (Total: 40)
+  "Svay Rieng": 40,
+  Chantrea: 7,
+  "Kampong Rou": 9,
+  "Romeas Haek": 10,
+  "Svay Chrum": 12,
+  Rumduol: 5,
+  "Svay Teab": 34,
+  // "Svay Rieng": 8,
+  Bavet: 15,
+
+  // Takeo (Total: 50)
+  Takeo: 50,
+  "Angkor Borei": 14,
+  Bati: 28,
+  "Borei Cholsar": 12,
+  "Doun Kaev": 30,
+  "Kaoh Andaet": 10,
+  "Kiri Vong": 22,
+  // "Prey Kabbas": 17,
+  Treang: 20,
+  "Tram Kak": 25,
+
+  // Tboung Khmum (Total: 55)
+  "Tboung Khmum": 25,
+  Dambae: 8,
+  "Krouch Chhmar": 13,
+  Memot: 14,
+  "Ou Reang Ov": 11,
+  "Ponhea Kraek": 10,
+  "Srei Santhor": 7,
+  Suong: 4,
+
+  // Phnom Penh
+  "Chamkar Mon": 40,
+  "Doun Penh": 50,
+  "Prampir Meakkakra": 35,
+  "Tuol Kouk": 45,
+  Dangkao: 30,
+  "Mean Chey": 38,
+  "Russey Keo": 42,
+  Saensokh: 28,
+  "Pur SenChey": 33,
+  "Chraoy Chongvar": 20,
+  "Praek Pnov": 18,
+  "Chbar Ampov": 27,
+  "Boeng Keng Kang": 22,
+  Kamboul: 15,
+
+  // Siem Reap
+  "Angkor Chum": 15,
+  "Angkor Thum": 12,
+  "Banteay Srei": 18,
+  "Chi Kraeng": 25,
+  Kralanh: 22,
+  Puok: 30,
+  "Prasat Bakong": 20,
+  "Siem Reap": 50,
+  "Soutr Nikom": 17,
+  "Srei Snam": 10,
+  "Svay Leu": 14,
+  Varin: 8,
+  "Run Ta Aek Techo Sen": 6,
+
+  // Kep
+  Kaeb: 10,
+  "Damnak Chang'aeur": 5,
+
+  // preah vihea
+  "Chey Saen": 12,
+  Chhaeb: 8,
+  "Choam Ksant": 15,
+  Kuleaen: 10,
+  Rovieng: 18,
+  "Sangkum Thmei": 9,
+  "Tbaeng Mean Chey": 14,
+  "Preah Vihear": 20,
+
+  // Steung treng
+  "Stueng Traeng": 7,
+  Sesan: 5,
+  "Siem Pang": 4,
+  "Thala Barivat": 3,
+  "Kong San": 2,
+  "Siem Bouk": 34,
+
+  // Kratie
+  Sambour: 43,
+  Kracheh: 10,
+  Chhloung: 8,
+  Snuol: 6,
+  "Chetr Borei": 5,
+  "Prek Prasab": 4,
+};
