@@ -24,9 +24,8 @@ function initThreeJS() {
   const width = container.value!.clientWidth
   const height = container.value!.clientHeight
 
-  // Adjusted camera position - slightly further back
   camera = new THREE.PerspectiveCamera(45, width / height, 0.001, 100)
-  camera.position.set(0, 0.03, 0.06) // Moved camera back a bit
+  camera.position.set(0, 0.035, 0.07)
   camera.lookAt(0, 0, 0)
 
   renderer = new THREE.WebGLRenderer({
@@ -43,12 +42,11 @@ function initThreeJS() {
   directionalLight.position.set(50, 50, 50)
   scene.add(directionalLight)
 
-  // Adjusted control limits for new camera position
   controls = new OrbitControls(camera, renderer.domElement)
   controls.enableDamping = true
   controls.dampingFactor = 0.05
-  controls.minDistance = 0.02  // Adjusted min zoom
-  controls.maxDistance = 0.2   // Adjusted max zoom
+  controls.minDistance = 0.025
+  controls.maxDistance = 0.25
 }
 
 function coordsToShape(coordinates: number[][]): THREE.Shape {
@@ -80,7 +78,7 @@ function createStateGeometry(coordinates: number[][]): THREE.ExtrudeGeometry {
   
   const extrudeSettings = {
     steps: 1,
-    depth: 0.0005,  // Keeping ultra-thin extrusion
+    depth: 0.0005,
     bevelEnabled: true,
     bevelThickness: 0.0001,
     bevelSize: 0.0001,
@@ -90,18 +88,28 @@ function createStateGeometry(coordinates: number[][]): THREE.ExtrudeGeometry {
   return new THREE.ExtrudeGeometry(shape, extrudeSettings)
 }
 
+function handleMultiPolygon(polygons: number[][][], material: THREE.Material, edgesMaterial: THREE.Material) {
+  polygons.forEach(polygon => {
+    const geometry = createStateGeometry(polygon[0])
+    
+    const mesh = new THREE.Mesh(geometry, material)
+    mesh.rotation.x = -Math.PI / 2
+
+    const edges = new THREE.EdgesGeometry(geometry)
+    const line = new THREE.LineSegments(edges, edgesMaterial)
+    line.rotation.x = -Math.PI / 2
+    
+    scene.add(mesh)
+    scene.add(line)
+  })
+}
+
 async function loadStates() {
   try {
     const response = await fetch('/province.geojson')
     const data = await response.json()
     
     data.features.forEach((feature: any) => {
-      const coordinates = feature.geometry.type === 'MultiPolygon'
-        ? feature.geometry.coordinates[0][0]
-        : feature.geometry.coordinates[0]
-      
-      const geometry = createStateGeometry(coordinates)
-      
       const material = new THREE.MeshPhongMaterial({
         color: new THREE.Color(0xadd8e6),
         flatShading: true
@@ -110,16 +118,24 @@ async function loadStates() {
       const edgesMaterial = new THREE.LineBasicMaterial({ 
         color: 0xffffff
       })
-      
-      const mesh = new THREE.Mesh(geometry, material)
-      mesh.rotation.x = -Math.PI / 2
 
-      const edges = new THREE.EdgesGeometry(geometry)
-      const line = new THREE.LineSegments(edges, edgesMaterial)
-      line.rotation.x = -Math.PI / 2
-      
-      scene.add(mesh)
-      scene.add(line)
+      if (feature.geometry.type === 'MultiPolygon') {
+        // Handle all polygons in MultiPolygon
+        handleMultiPolygon(feature.geometry.coordinates, material, edgesMaterial)
+      } else {
+        // Handle single polygon
+        const geometry = createStateGeometry(feature.geometry.coordinates[0])
+        
+        const mesh = new THREE.Mesh(geometry, material)
+        mesh.rotation.x = -Math.PI / 2
+
+        const edges = new THREE.EdgesGeometry(geometry)
+        const line = new THREE.LineSegments(edges, edgesMaterial)
+        line.rotation.x = -Math.PI / 2
+        
+        scene.add(mesh)
+        scene.add(line)
+      }
     })
     
     const box = new THREE.Box3().setFromObject(scene)
