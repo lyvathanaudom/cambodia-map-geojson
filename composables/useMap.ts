@@ -22,7 +22,7 @@ export function useMap() {
   
   // projection and geo generator
   const projection = geoMercator()
-    .scale(8000)
+    .scale(7000)
     .translate([width.value / 2, height.value / 2])
     .center([104.9160, 12.5657]);
   

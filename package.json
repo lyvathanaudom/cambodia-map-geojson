@@ -11,6 +11,9 @@
   },
   "dependencies": {
     "@nuxtjs/color-mode": "^3.5.2",
+    "@tweenjs/tween.js": "^25.0.0",
+    "@types/three": "^0.173.0",
+    "chroma-js": "^3.1.2",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "d3-ease": "^3.0.1",
@@ -28,11 +31,14 @@
     "shadcn-nuxt": "^0.11.3",
     "tailwind-merge": "^3.0.1",
     "tailwindcss-animate": "^1.0.7",
+    "three": "^0.173.0",
+    "three-geojson": "^1.0.0",
     "vue": "^3.5.13",
     "vue-router": "latest"
   },
   "devDependencies": {
     "@nuxtjs/tailwindcss": "^6.13.1",
+    "@types/chroma-js": "^3.1.1",
     "@types/d3-ease": "^3.0.2",
     "@types/d3-fetch": "^3.0.7",
     "@types/d3-geo": "^3.1.0",
