@@ -53,7 +53,7 @@
     <Card
       v-if="hoverCard.visible"
       :style="{ left: hoverCard.x + 'px', top: hoverCard.y + 'px' }"
-      class="absolute z-20 pointer-events-none"
+      class="transition absolute z-20 pointer-events-none"
     >
       <CardHeader>
         <CardTitle class="text-lg">{{ hoverCard.name }}</CardTitle>
