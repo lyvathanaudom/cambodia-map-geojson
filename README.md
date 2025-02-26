@@ -73,3 +73,26 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+components/  
+├── 🗺️ maps/  
+│   ├── 🌐 Map3DContainer.vue # Main container component  
+│   │  
+│   ├── 🧠 composables/ # Reusable Vue composables  
+│   │   ├── 🎲 useThreeJS.ts # Three.js initialization and core functionality  
+│   │   ├── 🎮 useMapControls.ts # Camera and orbit controls  
+│   │   ├── 🖱️ useMapInteractions.ts # Click, hover, and navigation logic  
+│   │   ├── 🗂️ useMapLayers.ts # Layer management (loading, styling)  
+│   │   └── 🎬 useMapAnimations.ts # GSAP animations for transitions  
+│   │  
+│   ├── 🧮 utils/ # Utility functions  
+│   │   ├── 🌍 geoUtils.ts # Geographic calculations and conversions  
+│   │   ├── 🛠️ threeUtils.ts # Three.js helper functions  
+│   │   └── 🏷️ labelUtils.ts # Text sprite generation and management  
+│   │  
+│   ├── 📂 types/ # TypeScript type definitions  
+│   │   ├── 🗺️ mapTypes.ts # Interfaces for map data and configuration  
+│   │   └── 📐 geoTypes.ts # GeoJSON and feature type definitions  
+│   │  
+│   └── 📑 constants/ # Configuration constants  
+│       ├── ⚙️ mapSettings.ts # Default camera settings, colors, etc.  
+│       └── 🧭 layerConfig.ts # Layer-specific settings  

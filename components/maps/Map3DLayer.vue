@@ -15,7 +15,14 @@ import { ref, onMounted, onBeforeUnmount } from 'vue'
 import * as THREE from 'three'
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js'
 import { gsap } from 'gsap'
+import { numberOfProvinceCrimes } from '@/data/provinceCrimes'
+import { numberOfDistrictCrimes } from '@/data/districtCrimes'
+import { createColorScale } from '@/utils/colorScale'
+import { ProvinceTranslation } from '@/data/provinceTranslation'
 
+// Create color scales for provinces and districts
+const { colorScale: provinceColorScale, customInterpolator: provinceInterpolator, minValue, maxValue } = createColorScale(numberOfProvinceCrimes)
+const { colorScale: districtColorScale, customInterpolator: districtInterpolator } = createColorScale(numberOfDistrictCrimes)
 const container = ref<HTMLDivElement>()
 const canvas = ref<HTMLCanvasElement>()
 
@@ -777,7 +784,7 @@ function webMercatorToWGS84(x: number, y: number): [number, number] {
 async function loadLayer(
   url: string,
   layerGroup: THREE.Group,
-  color: THREE.Color,
+  baseColor: THREE.Color,
   depth: number,
   showLabels = true
 ) {
@@ -787,7 +794,23 @@ async function loadLayer(
 
     data.features.forEach((feature: any) => {
       const label = feature.properties.HRName || feature.properties.DName || feature.properties.CName || 'N/A'
-      const material = new THREE.MeshPhongMaterial({ color, flatShading: true })
+      let color = baseColor
+      if(layerGroup === layers.provinces){
+        const crimeCount = numberOfProvinceCrimes[label] || 0
+        const t = provinceColorScale(crimeCount)
+        color = new THREE.Color(provinceInterpolator(t))
+      } else if (layerGroup === layers.districts) {
+        const crimeCount = numberOfDistrictCrimes[label] || 0
+        const t = districtColorScale(crimeCount)
+        color = new THREE.Color(districtInterpolator(t))
+      }
+      const material = new THREE.MeshPhongMaterial({ 
+        color, 
+        flatShading: true,
+        transparent: true,
+        opacity: 0.9 // Slight transparency to better see the variations
+      })
+      // const material = new THREE.MeshPhongMaterial({ color, flatShading: true })
       const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff })
 
       let group: THREE.Group
