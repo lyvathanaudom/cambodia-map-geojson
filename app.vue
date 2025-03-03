@@ -23,5 +23,6 @@ const toggleMap = () => {
       {{ buttonLabel }}
     </Button>
     <component :is="currentMap === 'interactive' ? InteractiveMap : Map3DLayer" />
+     <!-- <Map3DLayer/> -->
   </div>
 </template>
