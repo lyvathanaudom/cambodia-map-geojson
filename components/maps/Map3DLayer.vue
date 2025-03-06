@@ -160,13 +160,13 @@ async function handleBackClick() {
         showDistrictLabelsForProvince(selectedProvinceCode);
 
         // Start camera zoom simultaneously
-        zoomToGroup(provinceGroup, 0.8, 0.4, 1); // Reduced duration from 1.2 to 0.8
+        zoomToGroup(provinceGroup, 0.8, 0.4, 1);
       }
 
       // Set transition state to false sooner
       setTimeout(() => {
         isTransitioning = false;
-      }, 900); // Slightly longer than animation duration
+      }, 900);
     }
     // When only a province is selected, return to the top-level view
     else if (selectedProvinceCode) {
@@ -1031,15 +1031,24 @@ async function loadLayer(
         const crimeCount = numberOfDistrictCrimes[label] || 0;
         const t = districtColorScale(crimeCount);
         color = new THREE.Color(districtInterpolator(t));
+      } else if (layerGroup === layers.communes) {
+        // For communes, use a consistent red color
+        color = new THREE.Color(0xd84040); // Consistent red color for all communes
       }
 
       const material = new THREE.MeshPhongMaterial({
         color,
         flatShading: true,
         transparent: true,
-        opacity: 0.98,
+        opacity: layerGroup === layers.communes ? 0.95 : 0.98, // Slightly more transparent for communes
+        depthWrite: true, // Helps with z-fighting
       });
-      const edgeMat = new THREE.LineBasicMaterial({ color: 0xffffff });
+      
+      const edgeMat = new THREE.LineBasicMaterial({ 
+        color: 0xffffff,
+        transparent: false,
+        depthWrite: true
+      });
 
       let group: THREE.Group;
       if (feature.geometry.type === "MultiPolygon") {
@@ -1080,7 +1089,7 @@ async function loadLayer(
           layerGroup === layers.communes
             ? 10
             : layerGroup === layers.districts
-            ? 20
+            ? 15
             : 24;
 
         const sprite = createTextSprite(label, fontSize);
